@@ -17,3 +17,19 @@ var getElementsByClassName = function(className) {
   getElementsMatchingClassName(document.body, []);
   return results;
 };
+
+// Pure recursion solution:
+// 
+// var getElementsByClassName = function(className, element, results) {
+//   if (element) {
+//     if (element.classList && element.classList.contains(className)) {
+//       results.push(element);
+//     }
+//     element.childNodes.forEach(childNode => {
+//       return getElementsByClassName(className, childNode, results);
+//     });
+//     return results;
+//   } else {
+//     return getElementsByClassName(className, document.body, []);
+//   }
+// };
