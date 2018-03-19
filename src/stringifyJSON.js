@@ -16,5 +16,17 @@ var stringifyJSON = function(obj) {
       output.push(stringifyJSON(obj[i]));
     }
     return `[${output}]`;
+  } else if (typeof obj === 'object') {
+    const outputArray = [];
+    for (let key in obj) {
+      if (typeof obj[key] === 'function') {
+        return `{}`;
+      } else {
+        let stringKey = stringifyJSON(key);
+        let stringValue = stringifyJSON(obj[key]);
+        outputArray.push(`${stringKey}:${stringValue}`);
+      }
+    }
+    return `{${outputArray.join(',')}}`;
   }
 };
