@@ -10,5 +10,11 @@ var stringifyJSON = function(obj) {
     return `"${obj}"`;
   }  else if (obj === null) {
     return `null`;
+  } else if (Array.isArray(obj)) {
+    const output = [];
+    for (let i = 0; i < obj.length; i++) {
+      output.push(stringifyJSON(obj[i]));
+    }
+    return `[${output}]`;
   }
 };
